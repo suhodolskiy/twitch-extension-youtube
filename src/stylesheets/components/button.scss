@@ -1,0 +1,44 @@
+$btn-primary-color: #34d058;
+$btn-primary-darker-color: #28a745;
+
+.btn {
+  background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
+  background-color: #eff3f6;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 8px;
+	border: 0;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  &--block {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &--primary {
+    background: #FF0000;
+    color: #fff;
+    font-weight: 700;
+
+    &:hover:not(.btn--disabled) {
+      background: #FF3A3A;
+    }
+  }
+
+  &--disabled,
+  &[disabled] {
+    cursor: not-allowed;
+
+    &.btn--primary {
+      background: #B80000;
+    }
+  }
+}

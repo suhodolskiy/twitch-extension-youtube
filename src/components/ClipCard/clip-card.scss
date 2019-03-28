@@ -1,0 +1,36 @@
+@import '../../stylesheets/mixins/themify';
+@import '../../stylesheets/mixins/ellipsis';
+
+.clip-card {
+  display: block;
+  text-decoration: none;
+	padding: 5px;
+	width: 50%;
+
+	img {
+		width: 100%;
+		height: 60px;
+		border-radius: 3px;
+		overflow: hidden;
+		object-fit: cover;
+	}
+
+	&__title {
+		font-weight: 500;
+		font-size: 11px;
+
+		@include ellipsis();
+		@include themify() {
+			color: themed('textColor');
+		}
+	}
+
+	span {
+		font-size: 10px;
+
+		@include ellipsis();
+		@include themify() {
+			color: themed('secondTextColor');
+		}
+	}
+}

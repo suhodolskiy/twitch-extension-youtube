@@ -1,0 +1,66 @@
+@import '../../stylesheets/mixins/themify';
+@import '../../stylesheets/mixins/ellipsis';
+
+.header {
+  background: #1A1A1A;
+  padding: 10px 15px;
+
+	@include themify() {
+		color: themed('textColor');
+	}
+
+  &__link-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &__avatar {
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+
+  &__info {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+
+  &__subscribers {
+    font-size: 12px;
+    color: #9A9A9A;
+
+    @include ellipsis();
+  }
+}
+
+.clips {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.footer {
+	padding: 10px 15px;
+
+	@include themify() {
+		background: themed('secondBackground');
+	}
+}

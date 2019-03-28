@@ -1,0 +1,20 @@
+$themes: (
+  light: (
+    textColor: #1B1B1B,
+    secondTextColor: #777777,
+    background: #fff,
+    borderColor: #d1d5da,
+    secondBackground: #fff,
+    linkColor: #0366d6,
+    inputBackground: #fff,
+  ),
+  dark: (
+    textColor: #fff,
+    secondTextColor: #868686,
+    background: #363535,
+    borderColor: #2B2929,
+    secondBackground: #363535,
+    linkColor: #74b1f4,
+    inputBackground: #403E3E,
+  ),
+);
