@@ -16,9 +16,9 @@ export default {
       }`
     ).then((response) => get(response, 'items.0', null))
   },
-  getChannelClips(id) {
+  getChannelVideos(id) {
     return request(
-      `/search?channelId=${id}&part=snippet&order=date&maxResults=10&key=${
+      `/search?channelId=${id}&part=snippet&order=date&maxResults=12&key=${
         process.env.YOUTUBE_KEY
       }`
     ).then((response) => response.items)

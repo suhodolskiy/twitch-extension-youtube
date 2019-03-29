@@ -2,11 +2,8 @@ import { h, app } from 'hyperapp'
 
 import InputBase from '../InputBase/InputBase'
 import { toggleTheme } from '../../libs/utils'
-import youtubeApi from '../../api/youtube'
 
 import IconYoutube from '../../components/Icons/IconYoutube'
-
-import * as constants from '../../libs/constants'
 
 import '../../stylesheets/main.scss'
 import './config.scss'
@@ -15,9 +12,9 @@ import twitchApi from '../../api/twitch'
 app(
   {
     theme: 'light',
-    id: null,
     saved: false,
     error: null,
+    id: null,
   },
   {
     initTwitch: () => (state, actions) => {

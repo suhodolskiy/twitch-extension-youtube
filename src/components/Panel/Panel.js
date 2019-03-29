@@ -2,13 +2,11 @@ import get from 'lodash.get'
 import { h, app } from 'hyperapp'
 import { toggleTheme } from '../../libs/utils'
 
-import * as constants from '../../libs/constants'
 import youtubeApi from '../../api/youtube'
 import twitchApi from '../../api/twitch'
 
 import IconYoutube from '../../components/Icons/IconYoutube'
-
-import ClipCard from '../../components/ClipCard/ClipCard'
+import VideoCard from '../../components/VideoCard/VideoCard'
 
 import '../../stylesheets/main.scss'
 import './panel.scss'
@@ -18,7 +16,7 @@ app(
     theme: 'dark',
     loading: false,
     channel: null,
-    clips: null,
+    videos: null,
     error: null,
   },
   {
@@ -40,17 +38,14 @@ app(
         twitchApi.twitch.onError((error) => actions.setError(error))
       }
     },
-    loadYoutubeChannel: (id = 'UCoz3Kpu5lv-ALhR4h9bDvcw') => async (
-      state,
-      actions
-    ) => {
+    loadYoutubeChannel: (id) => async (state, actions) => {
       try {
         actions.setLoading()
 
         const channel = await youtubeApi.getChannelInfo(id)
         if (channel) {
           actions.setChannel(channel)
-          actions.setClips(await youtubeApi.getChannelClips(id))
+          actions.setVideos(await youtubeApi.getChannelVideos(id))
         }
       } catch (error) {
         actions.setError(error)
@@ -59,7 +54,7 @@ app(
       }
     },
     setChannel: (channel) => ({ channel }),
-    setClips: (clips) => ({ clips }),
+    setVideos: (videos) => ({ videos }),
     setLoading: (state = true) => ({ loading: state }),
     setTheme: (theme) => (state) => toggleTheme(theme, state.theme),
     setError: (error) => ({ error }),
@@ -116,24 +111,24 @@ app(
         <div className="app__content">
           {state.error}
           {state.loading && 'Loading ...'}
-          {state.clips && (
+          {state.videos && (
             <div className="clips">
-              {state.clips.map((clip) => (
-                <ClipCard clip={clip} key={clip.id.videoId} />
+              {state.videos.map((video) => (
+                <VideoCard video={video} key={get(video, 'id.videoId')} />
               ))}
             </div>
           )}
         </div>
-        <footer className="footer">
-          <a
-            href={url ? url + '?sub_confirmation=1' : null}
-            className="btn btn--block btn--primary"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Subscribe
-          </a>
-        </footer>
+        {/*<footer className="footer">*/}
+        {/*<a*/}
+        {/*href={url ? url + '?sub_confirmation=1' : null}*/}
+        {/*className="btn btn--block btn--primary"*/}
+        {/*rel="noopener noreferrer"*/}
+        {/*target="_blank"*/}
+        {/*>*/}
+        {/*Subscribe*/}
+        {/*</a>*/}
+        {/*</footer>*/}
       </div>
     )
   },
